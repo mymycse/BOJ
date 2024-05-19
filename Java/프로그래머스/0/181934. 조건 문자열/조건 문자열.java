@@ -1,16 +1,16 @@
 class Solution {
     public int solution(String ineq, String eq, int n, int m) {
-        int answer = 0;
+        boolean answer = false;
         if ( ineq.equals("<") )
             if ( eq.equals("=") )
-                answer = ( n <= m ) ? 1 : 0;
+                answer = ( n <= m );
             else
-                answer = ( n < m ) ? 1 : 0;
+                answer = ( n < m );
         else
             if ( eq.equals("=") )
-                answer = ( n >= m ) ? 1 : 0;
-            else answer = ( n > m ) ? 1 : 0;
+                answer = ( n >= m );
+            else answer = ( n > m );
         
-        return answer;
+        return answer ? 1 : 0;
     }
 }
