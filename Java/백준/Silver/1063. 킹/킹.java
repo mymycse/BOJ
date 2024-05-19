@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -29,18 +30,19 @@ public class Main {
 			}
 		}
 	}
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
-		String str = sc.next();
-		king = new int[]{str.charAt(0)-'A',str.charAt(1)-'1'};
+		StringTokenizer str = new StringTokenizer(br.readLine());
+		String kingPos = str.nextToken();
+		String rockPos = str.nextToken();
+		int n = Integer.parseInt(str.nextToken());
 
-		String st = sc.next();
-		rock = new int[]{st.charAt(0)-'A',st.charAt(1)-'1'};
+		king = new int[]{kingPos.charAt(0)-'A',kingPos.charAt(1)-'1'};
+		rock = new int[]{rockPos.charAt(0)-'A',rockPos.charAt(1)-'1'};
 
-		int n = sc.nextInt();
 		while ( n-- > 0 ) {
-			String com = sc.next();
+			String com = br.readLine();
 			int[] newKing = {king[0], king[1]};
 			move(com,newKing);
 
@@ -60,8 +62,6 @@ public class Main {
 			king = newKing;
 		}
 
-		sc.close();
-		
 		System.out.println("" + row[king[0]] + (king[1]+1));
 		System.out.println("" + row[rock[0]] + (rock[1]+1));
     }
